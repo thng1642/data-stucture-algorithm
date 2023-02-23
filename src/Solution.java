@@ -4,10 +4,13 @@ public class Solution {
     public static void main(String[] args) {
 
 //        int[] arr = {-2, 8, -9, 2, 5};
-        int[] arr = {12, -2, 6, 0, 7, 9, 12};
+//        int[] arr = {12, -2, 6, 0, 7, 9, 12};
+//        int[] arr = { 9, 3, 4, 5, 7, 0, 6 };
+        int[] arr = {8, 4, 3, 1, 6, 7, 11, 9, 2, 10, 5};
 
 //        insertionSort(arr, arr.length);
-        mergeSort(arr, 0, arr.length - 1);
+//        mergeSort(arr, 0, arr.length - 1);
+        quickSort(arr, 0, arr.length - 1);
         System.out.println("Sorted: " + Arrays.toString(arr));
     }
     private static void insertionSort(int[] arr, int n) {
@@ -78,6 +81,48 @@ public class Solution {
         while (iL < nL) {
             a[k] = Left[iL];
             iL++;k++;
+        }
+    }
+
+    private static int partition(int[] a, int left, int right) {
+
+        int pointer = right, i = left;
+        boolean isRearrange = false;
+
+        while (i < right) {
+
+            if (a[i] >= a[right] && !isRearrange) {
+
+                pointer = i;
+                isRearrange = true;
+            }
+            else if (a[i] < a[right] && isRearrange) {
+//                if (pointer != -1) {
+                    // swapping
+                    int tmp = a[pointer];
+                    a[pointer] = a[i];
+                    a[i] = tmp;
+                    pointer++;
+//                }
+            }
+            i++;
+        }
+        try {
+            int tmp = a[pointer];
+            a[pointer] = a[right];
+            a[right] = tmp;
+        } catch (Exception e) {
+            System.out.println("Exception: " + e.getMessage());
+        }
+        System.out.println("Pivot: " + pointer);
+        return pointer;
+    }
+
+    private static void quickSort(int[] a, int left, int right) {
+        if (left < right) {
+            int pivot = partition(a, left, right);
+            quickSort(a, left, pivot - 1);
+            quickSort(a, pivot + 1, right);
         }
     }
 }
