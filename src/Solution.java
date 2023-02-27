@@ -1,3 +1,5 @@
+import oop.dsa.MyArray;
+
 import java.util.Arrays;
 
 public class Solution {
@@ -6,12 +8,16 @@ public class Solution {
 //        int[] arr = {-2, 8, -9, 2, 5};
 //        int[] arr = {12, -2, 6, 0, 7, 9, 12};
 //        int[] arr = { 9, 3, 4, 5, 7, 0, 6 };
-        int[] arr = {8, 4, 3, 1, 6, 7, 11, 9, 2, 10, 5};
-
+        Integer[] arr = {8, 4, 3, 1, 6, 7, 11, 9, 2, 10, 5};
+        MyArray<Integer> obj = new MyArray(arr, arr.length);
+//        obj.insertionSort(false);
+//        obj.mergeSort(0, arr.length - 1);
+        obj.quickSort(0, arr.length - 1);
+        obj.printArray();
 //        insertionSort(arr, arr.length);
 //        mergeSort(arr, 0, arr.length - 1);
-        quickSort(arr, 0, arr.length - 1);
-        System.out.println("Sorted: " + Arrays.toString(arr));
+//        quickSort(arr, 0, arr.length - 1);
+//        System.out.println("Sorted: " + Arrays.toString(arr));
     }
     private static void insertionSort(int[] arr, int n) {
 
